@@ -6,10 +6,7 @@ using namespace std;
             Write a C++ Program which provides a solution for this particular problem.
 */
 
-void quotient_remainder(int dividend, int divisor, int &quotient, int &remainder) {
-    quotient = dividend / divisor;
-    remainder = dividend % divisor;
-}
+void quotient_remainder(int dividend, int divisor, int &quotient, int &remainder);
 
 int main() {
     int dividend, divisor, quotient, remainder;
@@ -24,4 +21,9 @@ int main() {
     cout << "Remainder: " << remainder << endl;
 
     return 0;
+}
+
+void quotient_remainder(int dividend, int divisor, int &quotient, int &remainder) {
+    quotient = dividend / divisor;
+    remainder = dividend % divisor;
 }
