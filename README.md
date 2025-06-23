@@ -67,10 +67,12 @@ int multiply(int a, int b, int c)
 #include <iostream>
 using namespace std;
 
-void quotient_remainder(int dividend, int divisor, int &quotient, int &remainder) {
-    quotient = dividend / divisor;
-    remainder = dividend % divisor;
-}
+/*
+        3. A student in a fifth class encounters a very easy math problem to find quotient and remainder.
+            Write a C++ Program which provides a solution for this particular problem.
+*/
+
+void quotient_remainder(int dividend, int divisor, int &quotient, int &remainder);
 
 int main() {
     int dividend, divisor, quotient, remainder;
@@ -87,6 +89,41 @@ int main() {
     return 0;
 }
 
+void quotient_remainder(int dividend, int divisor, int &quotient, int &remainder) {
+    quotient = dividend / divisor;
+    remainder = dividend % divisor;
+}
+
 ```
+
 **Output:**
 <img src="output/Phase_1/program3.png" alt="Quotient and Remainder Calculation">
+
+4. Two classmates wants to exchange their seating with each other. But the problem is that there are only two chairs in the small classroom which already aquires by them. Write a C++ Program which provides a solution for this particular problem.
+```cpp
+#include <iostream>
+using namespace std;
+
+void swap(int &a, int &b);
+
+int main()
+{
+    int a, b;
+    cout << "Enter the value of a: ";
+    cin >> a;
+    cout << "Enter the value of b: ";
+    cin >> b;
+    cout << "Before swapping: a = " << a << ", b = " << b << endl;
+    swap(a, b);
+    cout << "After swapping: a = " << a << ", b = " << b << endl;
+}
+void swap(int &a, int &b)
+{
+    a = a + b;
+    b = a - b;
+    a = a - b;
+}
+
+```
+**Output:**
+<img src="output/Phase_1/program4.png" alt="Swapping Two Values">
