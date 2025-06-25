@@ -1,11 +1,6 @@
 #include <iostream>
 using namespace std;
 
-/*
-        3. A student in a fifth class encounters a very easy math problem to find quotient and remainder.
-            Write a C++ Program which provides a solution for this particular problem.
-*/
-
 void quotient_remainder(int dividend, int divisor, int &quotient, int &remainder);
 
 int main() {

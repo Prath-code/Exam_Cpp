@@ -1,17 +1,6 @@
 #include <iostream>
 using namespace std;
-/*
-    4. Two classmates wants to exchange their
-        seating with each other. But the
-        problem
-        is that there are only two chairs in
-        the
-        small classroom which already aquires
-        by
-        them. Write a C++ Program which
-        provides a
-        solution for this particular problem.
-*/
+
 void swap(int &a, int &b);
 
 int main()

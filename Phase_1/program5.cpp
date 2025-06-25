@@ -4,14 +4,6 @@
 #include <ctype.h>
 using namespace std;
 
-/*
-    5. Two college collegues had
-        argue with a ASCII value
-        conversion method. Write a
-        C++ Program which provides a
-        solution for their issue.
-*/
-
 void displayMenu();
 
 int main()

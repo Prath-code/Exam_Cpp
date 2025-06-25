@@ -1,11 +1,6 @@
 #include <iostream>
 using namespace std;
 
-/*
-    2. Sameer is too weak to find multiplication of any three numbers.
-        Write a C++ Program which helps Sameer to solve his issue.
-*/
-
 int multiply(int a, int b, int c);
 
 int main()
