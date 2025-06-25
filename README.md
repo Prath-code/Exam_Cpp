@@ -889,7 +889,7 @@ Enter n: 10
 Even numbers between 1 and 10: 2 4 6 8 10
 ```
 
-<img src="Phase_1/phase-1.pdf" alt="Phase 1">
+<img src="Phase_2/phase-2.pdf" alt="Phase 2">
 
 ## Phase 2 : Numerical Programs : 15 programs
 
