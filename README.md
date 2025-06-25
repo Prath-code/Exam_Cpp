@@ -22,19 +22,20 @@ int main() {
     cout << "The cube of " << num << " is " << cube(num) << endl;
     return 0;
 }
-
 ```
 
 **Output:**
 
-<img src="output/Phase_1/program1.png" alt="Cube Calculation">
+```
+Enter a number: 3
+The cube of 3 is 27
+```
 
 2. Sameer is too weak to find multiplication of any three numbers. Write a C++ Program which helps Sameer to solve his issue.
 
 ```cpp
 #include <iostream>
 using namespace std;
-
 
 int multiply(int a, int b, int c);
 
@@ -55,22 +56,22 @@ int multiply(int a, int b, int c)
 {
     return a * b * c;
 }
-
 ```
 
 **Output:**
-<img src="output/Phase_1/program2.png" alt="Multiplication of Three Numbers">
+
+```
+Enter value num1: 2
+Enter value num2: 3
+Enter value num3: 4
+The multiplication of 2, 3, and 4 is 24
+```
 
 3. A student in a fifth class encounters a very easy math problem to find quotient and remainder. Write a C++ Program which provides a solution for this particular problem.
 
 ```cpp
 #include <iostream>
 using namespace std;
-
-/*
-        3. A student in a fifth class encounters a very easy math problem to find quotient and remainder.
-            Write a C++ Program which provides a solution for this particular problem.
-*/
 
 void quotient_remainder(int dividend, int divisor, int &quotient, int &remainder);
 
@@ -93,11 +94,16 @@ void quotient_remainder(int dividend, int divisor, int &quotient, int &remainder
     quotient = dividend / divisor;
     remainder = dividend % divisor;
 }
-
 ```
 
 **Output:**
-<img src="output/Phase_1/program3.png" alt="Quotient and Remainder Calculation">
+
+```
+Enter dividend: 17
+Enter divisor: 5
+Quotient: 3
+Remainder: 2
+```
 
 4. Two classmates wants to exchange their seating with each other. But the problem is that there are only two chairs in the small classroom which already aquires by them. Write a C++ Program which provides a solution for this particular problem.
 
@@ -124,11 +130,16 @@ void swap(int &a, int &b)
     b = a - b;
     a = a - b;
 }
-
 ```
 
 **Output:**
-<img src="output/Phase_1/program4.png" alt="Swapping Two Values">
+
+```
+Enter the value of a: 10
+Enter the value of b: 20
+Before swapping: a = 10, b = 20
+After swapping: a = 20, b = 10
+```
 
 5. Two college collegues had argue with a ASCII value conversion method. Write a C++ Program which provides a solution for their issue.
 
@@ -171,7 +182,7 @@ int main()
             int assci;
             assci = (int)letter;
 
-            cout << "ASCII value of '" << letter << "' is " << assci;
+            cout << "ASCII value of '" << letter << "' is " << assci << endl;
         }
         break;
 
@@ -216,8 +227,664 @@ void displayMenu()
     cout << "| 0. Exit                      |" << endl;
     cout << "+------------------------------+" << endl;
 }
-
 ```
 
 **Output:**
-<img src="output/Phase_1/program5.png" alt="Swapping Two Values">
+
+```
++------------------------------+
+|             Menu             |
++------------------------------+
+| 1. Character to ASCII value  |
+| 2. ASCII value to Character  |
+| 0. Exit                      |
++------------------------------+
+Enter your choice: 1
+Enter a single letter: A
+ASCII value of 'A' is 65
+
++------------------------------+
+|             Menu             |
++------------------------------+
+| 1. Character to ASCII value  |
+| 2. ASCII value to Character  |
+| 0. Exit                      |
++------------------------------+
+Enter your choice: 2
+Enter an ASCII value (0-127): 66
+Character for ASCII value 66 is 'B'
+
++------------------------------+
+|             Menu             |
++------------------------------+
+| 1. Character to ASCII value  |
+| 2. ASCII value to Character  |
+| 0. Exit                      |
++------------------------------+
+Enter your choice: 0
+Exiting Proram...
+```
+
+---
+
+6. Write a C++ program to check whether a number is even or odd.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    if (num % 2 == 0)
+        cout << num << " is even." << endl;
+    else
+        cout << num << " is odd." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 7
+7 is odd.
+```
+
+---
+
+7. Write a C++ program to find the largest of three numbers.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, c;
+    cout << "Enter three numbers: ";
+    cin >> a >> b >> c;
+    int largest = a;
+    if (b > largest) largest = b;
+    if (c > largest) largest = c;
+    cout << "The largest number is " << largest << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter three numbers: 5 9 3
+The largest number is 9
+```
+
+---
+
+8. Write a C++ program to check whether a year is a leap year or not.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int year;
+    cout << "Enter a year: ";
+    cin >> year;
+    if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+        cout << year << " is a leap year." << endl;
+    else
+        cout << year << " is not a leap year." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a year: 2024
+2024 is a leap year.
+```
+
+---
+
+9. Write a C++ program to find the factorial of a number.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, fact = 1;
+    cout << "Enter a number: ";
+    cin >> n;
+    for (int i = 1; i <= n; i++)
+        fact *= i;
+    cout << "Factorial of " << n << " is " << fact << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 5
+Factorial of 5 is 120
+```
+
+---
+
+10. Write a C++ program to print the Fibonacci series up to n terms.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, a = 0, b = 1, next;
+    cout << "Enter number of terms: ";
+    cin >> n;
+    cout << "Fibonacci Series: ";
+    for (int i = 1; i <= n; i++) {
+        cout << a << " ";
+        next = a + b;
+        a = b;
+        b = next;
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter number of terms: 6
+Fibonacci Series: 0 1 1 2 3 5
+```
+
+---
+
+11. Write a C++ program to reverse a number.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, rev = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+    while (n != 0) {
+        rev = rev * 10 + n % 10;
+        n /= 10;
+    }
+    cout << "Reversed number: " << rev << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 1234
+Reversed number: 4321
+```
+
+---
+
+12. Write a C++ program to check whether a number is palindrome or not.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, temp, rev = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+    temp = n;
+    while (temp != 0) {
+        rev = rev * 10 + temp % 10;
+        temp /= 10;
+    }
+    if (n == rev)
+        cout << n << " is a palindrome." << endl;
+    else
+        cout << n << " is not a palindrome." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 121
+121 is a palindrome.
+```
+
+---
+
+13. Write a C++ program to check whether a number is prime or not.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, i, flag = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+    if (n <= 1) flag = 1;
+    for (i = 2; i <= n / 2; i++) {
+        if (n % i == 0) {
+            flag = 1;
+            break;
+        }
+    }
+    if (flag == 0)
+        cout << n << " is a prime number." << endl;
+    else
+        cout << n << " is not a prime number." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 7
+7 is a prime number.
+```
+
+---
+
+14. Write a C++ program to find the sum of digits of a number.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+    while (n != 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+    cout << "Sum of digits: " << sum << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 1234
+Sum of digits: 10
+```
+
+---
+
+15. Write a C++ program to swap two numbers using a temporary variable.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, temp;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+    temp = a;
+    a = b;
+    b = temp;
+    cout << "After swapping: a = " << a << ", b = " << b << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter two numbers: 5 9
+After swapping: a = 9, b = 5
+```
+
+---
+
+16. Write a C++ program to calculate the power of a number.
+
+```cpp
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    double base, exponent, result;
+    cout << "Enter base: ";
+    cin >> base;
+    cout << "Enter exponent: ";
+    cin >> exponent;
+    result = pow(base, exponent);
+    cout << base << " raised to the power " << exponent << " is " << result << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter base: 2
+Enter exponent: 3
+2 raised to the power 3 is 8
+```
+
+---
+
+17. Write a C++ program to find the GCD of two numbers.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+    int gcd = 1;
+    for (int i = 1; i <= a && i <= b; i++) {
+        if (a % i == 0 && b % i == 0)
+            gcd = i;
+    }
+    cout << "GCD is " << gcd << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter two numbers: 12 18
+GCD is 6
+```
+
+---
+
+18. Write a C++ program to find the LCM of two numbers.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, max;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+    max = (a > b) ? a : b;
+    while (true) {
+        if (max % a == 0 && max % b == 0) {
+            cout << "LCM is " << max << endl;
+            break;
+        }
+        ++max;
+    }
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter two numbers: 4 6
+LCM is 12
+```
+
+---
+
+19. Write a C++ program to print all factors of a number.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+    cout << "Factors of " << n << " are: ";
+    for (int i = 1; i <= n; i++) {
+        if (n % i == 0)
+            cout << i << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 12
+Factors of 12 are: 1 2 3 4 6 12
+```
+
+---
+
+20. Write a C++ program to count the number of digits in a number.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, count = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+    while (n != 0) {
+        n /= 10;
+        count++;
+    }
+    cout << "Number of digits: " << count << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 12345
+Number of digits: 5
+```
+
+---
+
+21. Write a C++ program to check whether a character is a vowel or consonant.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    char ch;
+    cout << "Enter a character: ";
+    cin >> ch;
+    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
+        ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')
+        cout << ch << " is a vowel." << endl;
+    else
+        cout << ch << " is a consonant." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a character: e
+e is a vowel.
+```
+
+---
+
+22. Write a C++ program to find the ASCII value of a character.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    char ch;
+    cout << "Enter a character: ";
+    cin >> ch;
+    cout << "ASCII value of " << ch << " is " << int(ch) << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a character: A
+ASCII value of A is 65
+```
+
+---
+
+23. Write a C++ program to convert temperature from Celsius to Fahrenheit.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    float celsius, fahrenheit;
+    cout << "Enter temperature in Celsius: ";
+    cin >> celsius;
+    fahrenheit = (celsius * 9 / 5) + 32;
+    cout << "Temperature in Fahrenheit: " << fahrenheit << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter temperature in Celsius: 37
+Temperature in Fahrenheit: 98.6
+```
+
+---
+
+24. Write a C++ program to convert temperature from Fahrenheit to Celsius.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    float fahrenheit, celsius;
+    cout << "Enter temperature in Fahrenheit: ";
+    cin >> fahrenheit;
+    celsius = (fahrenheit - 32) * 5 / 9;
+    cout << "Temperature in Celsius: " << celsius << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter temperature in Fahrenheit: 98.6
+Temperature in Celsius: 37
+```
+
+---
+
+25. Write a C++ program to calculate the sum of the first n natural numbers.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+    cout << "Enter n: ";
+    cin >> n;
+    for (int i = 1; i <= n; i++)
+        sum += i;
+    cout << "Sum of first " << n << " natural numbers is " << sum << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter n: 10
+Sum of first 10 natural numbers is 55
+```
+
+---
+
+26. Write a C++ program to print multiplication table of a number.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+    cout << "Multiplication table of " << n << ":" << endl;
+    for (int i = 1; i <= 10; i++)
+        cout << n << " x " << i << " = " << n * i << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 5
+Multiplication table of 5:
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50
+```
+
+---
+
+27. Write a C++ program to print all even numbers between 1 and n.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter n: ";
+    cin >> n;
+    cout << "Even numbers between 1 and " << n << ": ";
+    for (int i = 2; i <= n; i += 2)
+        cout << i << " ";
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter n: 10
+Even numbers between 1 and 10: 2 4 6 8 10
+```
