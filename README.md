@@ -1352,3 +1352,482 @@ Enter a number: 145
 ```
 
 ---
+
+## Phase 3 : Advanced Programs : 10 programs [Question_Pdf](Phase_3/phase-3.pdf)
+
+1. Write a C++ program to sort an array using bubble sort.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int arr[100];
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter number of elements: 5
+Enter elements: 4 2 5 1 3
+Sorted array: 1 2 3 4 5
+```
+
+---
+
+2. Write a C++ program to search an element in an array using linear search.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, key, found = 0;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int arr[100];
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    cout << "Enter element to search: ";
+    cin >> key;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == key) {
+            found = 1;
+            break;
+        }
+    }
+    if (found)
+        cout << key << " is found in the array." << endl;
+    else
+        cout << key << " is not found in the array." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter number of elements: 5
+Enter elements: 1 2 3 4 5
+Enter element to search: 3
+3 is found in the array.
+```
+
+---
+
+3. Write a C++ program to find the transpose of a matrix.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int r, c;
+    cout << "Enter rows and columns: ";
+    cin >> r >> c;
+    int mat[10][10], trans[10][10];
+    cout << "Enter matrix elements:\n";
+    for (int i = 0; i < r; i++)
+        for (int j = 0; j < c; j++)
+            cin >> mat[i][j];
+    for (int i = 0; i < r; i++)
+        for (int j = 0; j < c; j++)
+            trans[j][i] = mat[i][j];
+    cout << "Transpose of the matrix:\n";
+    for (int i = 0; i < c; i++) {
+        for (int j = 0; j < r; j++)
+            cout << trans[i][j] << " ";
+        cout << endl;
+    }
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter rows and columns: 2 3
+Enter matrix elements:
+1 2 3
+4 5 6
+Transpose of the matrix:
+1 4
+2 5
+3 6
+```
+
+---
+
+4. Write a C++ program to multiply two matrices.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int r1, c1, r2, c2;
+    cout << "Enter rows and columns of first matrix: ";
+    cin >> r1 >> c1;
+    cout << "Enter rows and columns of second matrix: ";
+    cin >> r2 >> c2;
+    if (c1 != r2) {
+        cout << "Matrix multiplication not possible." << endl;
+        return 0;
+    }
+    int a[10][10], b[10][10], prod[10][10] = {0};
+    cout << "Enter first matrix:\n";
+    for (int i = 0; i < r1; i++)
+        for (int j = 0; j < c1; j++)
+            cin >> a[i][j];
+    cout << "Enter second matrix:\n";
+    for (int i = 0; i < r2; i++)
+        for (int j = 0; j < c2; j++)
+            cin >> b[i][j];
+    for (int i = 0; i < r1; i++)
+        for (int j = 0; j < c2; j++)
+            for (int k = 0; k < c1; k++)
+                prod[i][j] += a[i][k] * b[k][j];
+    cout << "Product matrix:\n";
+    for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c2; j++)
+            cout << prod[i][j] << " ";
+        cout << endl;
+    }
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter rows and columns of first matrix: 2 3
+Enter rows and columns of second matrix: 3 2
+Enter first matrix:
+1 2 3
+4 5 6
+Enter second matrix:
+7 8
+9 10
+11 12
+Product matrix:
+58 64
+139 154
+```
+
+---
+
+5. Write a C++ program to find the sum of each row and column of a matrix.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int r, c;
+    cout << "Enter rows and columns: ";
+    cin >> r >> c;
+    int mat[10][10];
+    cout << "Enter matrix elements:\n";
+    for (int i = 0; i < r; i++)
+        for (int j = 0; j < c; j++)
+            cin >> mat[i][j];
+    cout << "Sum of each row:\n";
+    for (int i = 0; i < r; i++) {
+        int sum = 0;
+        for (int j = 0; j < c; j++)
+            sum += mat[i][j];
+        cout << "Row " << i + 1 << ": " << sum << endl;
+    }
+    cout << "Sum of each column:\n";
+    for (int j = 0; j < c; j++) {
+        int sum = 0;
+        for (int i = 0; i < r; i++)
+            sum += mat[i][j];
+        cout << "Column " << j + 1 << ": " << sum << endl;
+    }
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter rows and columns: 2 2
+Enter matrix elements:
+1 2
+3 4
+Sum of each row:
+Row 1: 3
+Row 2: 7
+Sum of each column:
+Column 1: 4
+Column 2: 6
+```
+
+---
+
+6. Write a C++ program to find the largest element in an array.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, max;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int arr[100];
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    max = arr[0];
+    for (int i = 1; i < n; i++)
+        if (arr[i] > max)
+            max = arr[i];
+    cout << "Largest element is " << max << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter number of elements: 5
+Enter elements: 2 8 1 6 4
+Largest element is 8
+```
+
+---
+
+7. Write a C++ program to reverse an array.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int arr[100];
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    cout << "Reversed array: ";
+    for (int i = n - 1; i >= 0; i--)
+        cout << arr[i] << " ";
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter number of elements: 4
+Enter elements: 1 2 3 4
+Reversed array: 4 3 2 1
+```
+
+---
+
+8. Write a C++ program to merge two arrays.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n1, n2;
+    cout << "Enter size of first array: ";
+    cin >> n1;
+    int arr1[100];
+    cout << "Enter elements of first array: ";
+    for (int i = 0; i < n1; i++)
+        cin >> arr1[i];
+    cout << "Enter size of second array: ";
+    cin >> n2;
+    int arr2[100];
+    cout << "Enter elements of second array: ";
+    for (int i = 0; i < n2; i++)
+        cin >> arr2[i];
+    int arr3[200];
+    for (int i = 0; i < n1; i++)
+        arr3[i] = arr1[i];
+    for (int i = 0; i < n2; i++)
+        arr3[n1 + i] = arr2[i];
+    cout << "Merged array: ";
+    for (int i = 0; i < n1 + n2; i++)
+        cout << arr3[i] << " ";
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter size of first array: 3
+Enter elements of first array: 1 2 3
+Enter size of second array: 2
+Enter elements of second array: 4 5
+Merged array: 1 2 3 4 5
+```
+
+---
+
+9. Write a C++ program to count the frequency of each element in an array.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int arr[100], freq[100] = {0};
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    for (int i = 0; i < n; i++) {
+        if (freq[i] == -1)
+            continue;
+        int count = 1;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[i] == arr[j]) {
+                count++;
+                freq[j] = -1;
+            }
+        }
+        freq[i] = count;
+    }
+    cout << "Frequency of each element:\n";
+    for (int i = 0; i < n; i++) {
+        if (freq[i] != -1)
+            cout << arr[i] << ": " << freq[i] << endl;
+    }
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter number of elements: 6
+Enter elements: 1 2 2 3 3 3
+Frequency of each element:
+1: 1
+2: 2
+3: 3
+```
+
+---
+
+10. Write a C++ program to copy one array to another.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int arr1[100], arr2[100];
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr1[i];
+    for (int i = 0; i < n; i++)
+        arr2[i] = arr1[i];
+    cout << "Copied array: ";
+    for (int i = 0; i < n; i++)
+        cout << arr2[i] << " ";
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter number of elements: 4
+Enter elements: 5 6
+```
+
+---
+
+11. Write a C++ program to check whether a number is an Armstrong number or not.
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string msg;
+    int shift;
+    int choice;
+    cout << "Enter the message: ";
+    cin >> msg;
+    cout << "Enter shift value: ";
+    cin >> shift;
+    cout << "1. Encode\n2. Decode\nEnter choice: ";
+    cin >> choice;
+    string result = msg;
+    if (choice == 1)
+    {
+        for (char &c : result)
+        {
+            c += shift;
+        }
+    }
+    else if (choice == 2)
+    {
+        for (char &c : result)
+        {
+            c -= shift;
+        }
+    }
+    else
+    {
+        cout << "Invalid choice\n";
+        return 0;
+    }
+    cout << "Result: " << result << endl;
+    return 0;
+}
+
+```
+
+**Output:**
+
+```
+Enter a number: 153
+153 is an Armstrong number.
+```
+
+---
