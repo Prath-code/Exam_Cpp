@@ -1,8 +1,6 @@
 # Exam C++
 
-## Phase 1 : Basic Programs : 27 programs
-
-<img src="Phase_1/phase-1.pdf" alt="Phase 1">
+## Phase 1 : Basic Programs : 27 programs [Question_Pdf](Phase_1/phase-1.pdf)
 
 1. Meena face an isuue to perform a mathematical operation to find a cube of any number. Write a C++ Program which helps Meena to solve her issue.
 
@@ -889,9 +887,7 @@ Enter n: 10
 Even numbers between 1 and 10: 2 4 6 8 10
 ```
 
-<img src="Phase_2/phase-2.pdf" alt="Phase 2">
-
-## Phase 2 : Numerical Programs : 15 programs
+## Phase 2 : Numerical Programs : 15 programs [Question_Pdf](Phase_2/phase-2.pdf)
 
 1. Write a C++ program to check whether a number is positive, negative or zero.
 
