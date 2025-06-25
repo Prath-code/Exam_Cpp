@@ -1353,7 +1353,7 @@ Enter a number: 145
 
 ---
 
-## Phase 3 : Advanced Programs : 10 programs [Question_Pdf](Phase_3/phase-3.pdf)
+## Phase 3 : String Programs : 10 programs [Question_Pdf](Phase_3/phase-3.pdf)
 
 1. Write a C++ program to sort an array using bubble sort.
 
