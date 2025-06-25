@@ -1,6 +1,6 @@
 # Exam C++
 
-## Phase 1 : Basic Program : 27 programs
+## Phase 1 : Basic Programs : 27 programs
 
 <img src="Phase_1/phase-1.pdf" alt="Phase 1">
 
@@ -888,3 +888,471 @@ int main() {
 Enter n: 10
 Even numbers between 1 and 10: 2 4 6 8 10
 ```
+
+<img src="Phase_1/phase-1.pdf" alt="Phase 1">
+
+## Phase 2 : Numerical Programs : 15 programs
+
+1. Write a C++ program to check whether a number is positive, negative or zero.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    if (num > 0)
+        cout << num << " is positive." << endl;
+    else if (num < 0)
+        cout << num << " is negative." << endl;
+    else
+        cout << "The number is zero." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: -5
+-5 is negative.
+```
+
+---
+
+2. Write a C++ program to check whether a number is divisible by 5 and 11 or not.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+    if (num % 5 == 0 && num % 11 == 0)
+        cout << num << " is divisible by both 5 and 11." << endl;
+    else
+        cout << num << " is not divisible by both 5 and 11." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 55
+55 is divisible by both 5 and 11.
+```
+
+---
+
+3. Write a C++ program to find the sum of all even numbers between 1 and n.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+    cout << "Enter n: ";
+    cin >> n;
+    for (int i = 2; i <= n; i += 2)
+        sum += i;
+    cout << "Sum of even numbers between 1 and " << n << " is " << sum << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter n: 10
+Sum of even numbers between 1 and 10 is 30
+```
+
+---
+
+4. Write a C++ program to find the sum of all odd numbers between 1 and n.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+    cout << "Enter n: ";
+    cin >> n;
+    for (int i = 1; i <= n; i += 2)
+        sum += i;
+    cout << "Sum of odd numbers between 1 and " << n << " is " << sum << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter n: 10
+Sum of odd numbers between 1 and 10 is 25
+```
+
+---
+
+5. Write a C++ program to find the sum of the series 1 + 2 + 3 + ... + n.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+    cout << "Enter n: ";
+    cin >> n;
+    for (int i = 1; i <= n; i++)
+        sum += i;
+    cout << "Sum of the series is " << sum << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter n: 5
+Sum of the series is 15
+```
+
+---
+
+6. Write a C++ program to find the sum of the series 1^2 + 2^2 + 3^2 + ... + n^2.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+    cout << "Enter n: ";
+    cin >> n;
+    for (int i = 1; i <= n; i++)
+        sum += i * i;
+    cout << "Sum of the series is " << sum << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter n: 3
+Sum of the series is 14
+```
+
+---
+
+7. Write a C++ program to find the sum of the series 1^3 + 2^3 + 3^3 + ... + n^3.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+    cout << "Enter n: ";
+    cin >> n;
+    for (int i = 1; i <= n; i++)
+        sum += i * i * i;
+    cout << "Sum of the series is " << sum << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter n: 3
+Sum of the series is 36
+```
+
+---
+
+8. Write a C++ program to find the sum of digits of a given number.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+    while (n != 0) {
+        sum += n % 10;
+        n /= 10;
+    }
+    cout << "Sum of digits is " << sum << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 1234
+Sum of digits is 10
+```
+
+---
+
+9. Write a C++ program to reverse a given number.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, rev = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+    while (n != 0) {
+        rev = rev * 10 + n % 10;
+        n /= 10;
+    }
+    cout << "Reversed number is " << rev << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 1234
+Reversed number is 4321
+```
+
+---
+
+10. Write a C++ program to check whether a number is a palindrome or not.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, temp, rev = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+    temp = n;
+    while (temp != 0) {
+        rev = rev * 10 + temp % 10;
+        temp /= 10;
+    }
+    if (n == rev)
+        cout << n << " is a palindrome." << endl;
+    else
+        cout << n << " is not a palindrome." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 121
+121 is a palindrome.
+```
+
+---
+
+11. Write a C++ program to check whether a number is an Armstrong number or not.
+
+```cpp
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int n, temp, sum = 0, digits = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+    temp = n;
+    while (temp != 0) {
+        digits++;
+        temp /= 10;
+    }
+    temp = n;
+    while (temp != 0) {
+        sum += pow(temp % 10, digits);
+        temp /= 10;
+    }
+    if (sum == n)
+        cout << n << " is an Armstrong number." << endl;
+    else
+        cout << n << " is not an Armstrong number." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 153
+153 is an Armstrong number.
+```
+
+---
+
+12. Write a C++ program to print all Armstrong numbers between 1 and n.
+
+```cpp
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isArmstrong(int num) {
+    int temp = num, sum = 0, digits = 0;
+    while (temp != 0) {
+        digits++;
+        temp /= 10;
+    }
+    temp = num;
+    while (temp != 0) {
+        sum += pow(temp % 10, digits);
+        temp /= 10;
+    }
+    return sum == num;
+}
+
+int main() {
+    int n;
+    cout << "Enter n: ";
+    cin >> n;
+    cout << "Armstrong numbers between 1 and " << n << ": ";
+    for (int i = 1; i <= n; i++) {
+        if (isArmstrong(i))
+            cout << i << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter n: 500
+Armstrong numbers between 1 and 500: 1 2 3 4 5 6 7 8 9 153 370 371 407
+```
+
+---
+
+13. Write a C++ program to check whether a number is a perfect number or not.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, sum = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+    for (int i = 1; i < n; i++) {
+        if (n % i == 0)
+            sum += i;
+    }
+    if (sum == n)
+        cout << n << " is a perfect number." << endl;
+    else
+        cout << n << " is not a perfect number." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 28
+28 is a perfect number.
+```
+
+---
+
+14. Write a C++ program to print all perfect numbers between 1 and n.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+bool isPerfect(int n) {
+    int sum = 0;
+    for (int i = 1; i < n; i++) {
+        if (n % i == 0)
+            sum += i;
+    }
+    return sum == n;
+}
+
+int main() {
+    int n;
+    cout << "Enter n: ";
+    cin >> n;
+    cout << "Perfect numbers between 1 and " << n << ": ";
+    for (int i = 1; i <= n; i++) {
+        if (isPerfect(i))
+            cout << i << " ";
+    }
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter n: 1000
+Perfect numbers between 1 and 1000: 6 28 496
+```
+
+---
+
+15. Write a C++ program to check whether a number is a strong number or not.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+    int fact = 1;
+    for (int i = 1; i <= n; i++)
+        fact *= i;
+    return fact;
+}
+
+int main() {
+    int n, temp, sum = 0;
+    cout << "Enter a number: ";
+    cin >> n;
+    temp = n;
+    while (temp != 0) {
+        sum += factorial(temp % 10);
+        temp /= 10;
+    }
+    if (sum == n)
+        cout << n << " is a strong number." << endl;
+    else
+        cout << n << " is not a strong number." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a number: 145
+145 is a strong number.
+```
+
+---
