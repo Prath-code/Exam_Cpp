@@ -1831,3 +1831,392 @@ Enter a number: 153
 ```
 
 ---
+
+## Phase 5 : Functional Programs : 10 programs [Question_Pdf](Phase_5/phase-5.pdf)
+
+1. Write a C++ program to check if a string is a palindrome.
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str, rev;
+    cout << "Enter a string: ";
+    cin >> str;
+    rev = string(str.rbegin(), str.rend());
+    if (str == rev)
+        cout << str << " is a palindrome." << endl;
+    else
+        cout << str << " is not a palindrome." << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a string: madam
+madam is a palindrome.
+```
+
+---
+
+2. Write a C++ program to count vowels and consonants in a string.
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str;
+    int vowels = 0, consonants = 0;
+    cout << "Enter a string: ";
+    cin >> str;
+    for (char c : str) {
+        c = tolower(c);
+        if (isalpha(c)) {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+                vowels++;
+            else
+                consonants++;
+        }
+    }
+    cout << "Vowels: " << vowels << endl;
+    cout << "Consonants: " << consonants << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a string: Hello
+Vowels: 2
+Consonants: 3
+```
+
+---
+
+3. Write a C++ program to implement a stack using an array.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+#define MAX 100
+
+int stack[MAX], top = -1;
+
+void push(int val) {
+    if (top >= MAX - 1)
+        cout << "Stack Overflow" << endl;
+    else
+        stack[++top] = val;
+}
+
+void pop() {
+    if (top < 0)
+        cout << "Stack Underflow" << endl;
+    else
+        top--;
+}
+
+void display() {
+    if (top < 0)
+        cout << "Stack is empty" << endl;
+    else {
+        cout << "Stack: ";
+        for (int i = 0; i <= top; i++)
+            cout << stack[i] << " ";
+        cout << endl;
+    }
+}
+
+int main() {
+    push(10);
+    push(20);
+    display();
+    pop();
+    display();
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Stack: 10 20
+Stack: 10
+```
+
+---
+
+4. Write a C++ program to implement a queue using an array.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+#define MAX 100
+
+int queue[MAX], front = -1, rear = -1;
+
+void enqueue(int val) {
+    if (rear == MAX - 1)
+        cout << "Queue Overflow" << endl;
+    else {
+        if (front == -1) front = 0;
+        queue[++rear] = val;
+    }
+}
+
+void dequeue() {
+    if (front == -1 || front > rear)
+        cout << "Queue Underflow" << endl;
+    else
+        front++;
+}
+
+void display() {
+    if (front == -1 || front > rear)
+        cout << "Queue is empty" << endl;
+    else {
+        cout << "Queue: ";
+        for (int i = front; i <= rear; i++)
+            cout << queue[i] << " ";
+        cout << endl;
+    }
+}
+
+int main() {
+    enqueue(5);
+    enqueue(15);
+    display();
+    dequeue();
+    display();
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Queue: 5 15
+Queue: 15
+```
+
+---
+
+5. Write a C++ program to find the frequency of characters in a string.
+
+```cpp
+#include <iostream>
+#include <string>
+#include <map>
+using namespace std;
+
+int main() {
+    string str;
+    map<char, int> freq;
+    cout << "Enter a string: ";
+    cin >> str;
+    for (char c : str)
+        freq[c]++;
+    for (auto p : freq)
+        cout << p.first << ": " << p.second << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a string: apple
+a: 1
+e: 1
+l: 1
+p: 2
+```
+
+---
+
+6. Write a C++ program to reverse a linked list.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+Node* reverse(Node* head) {
+    Node* prev = nullptr;
+    Node* curr = head;
+    while (curr) {
+        Node* next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
+}
+
+void printList(Node* head) {
+    while (head) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = new Node{1, new Node{2, new Node{3, nullptr}}};
+    head = reverse(head);
+    printList(head);
+    return 0;
+}
+```
+
+**Output:**
+
+```
+3 2 1
+```
+
+---
+
+7. Write a C++ program to concatenate two strings without using library functions.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    char str1[100], str2[100], result[200];
+    cout << "Enter first string: ";
+    cin >> str1;
+    cout << "Enter second string: ";
+    cin >> str2;
+    int i = 0, j = 0;
+    while (str1[i] != '\0') {
+        result[i] = str1[i];
+        i++;
+    }
+    while (str2[j] != '\0') {
+        result[i++] = str2[j++];
+    }
+    result[i] = '\0';
+    cout << "Concatenated string: " << result << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter first string: Hello
+Enter second string: World
+Concatenated string: HelloWorld
+```
+
+---
+
+8. Write a C++ program to find the length of a string without using library functions.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    char str[100];
+    int length = 0;
+    cout << "Enter a string: ";
+    cin >> str;
+    while (str[length] != '\0')
+        length++;
+    cout << "Length of the string: " << length << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter a string: OpenAI
+Length of the string: 6
+```
+
+---
+
+9. Write a C++ program to implement a simple calculator using switch case.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    char op;
+    float num1, num2;
+    cout << "Enter operator (+, -, *, /): ";
+    cin >> op;
+    cout << "Enter two operands: ";
+    cin >> num1 >> num2;
+    switch (op) {
+        case '+': cout << num1 + num2 << endl; break;
+        case '-': cout << num1 - num2 << endl; break;
+        case '*': cout << num1 * num2 << endl; break;
+        case '/': cout << num2 != 0 ? num1 / num2 : 0 << endl; break;
+        default: cout << "Invalid operator" << endl;
+    }
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter operator (+, -, *, /): *
+Enter two operands: 4 5
+20
+```
+
+---
+
+10. Write a C++ program to check if two strings are anagrams.
+
+```cpp
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string str1, str2;
+    cout << "Enter first string: ";
+    cin >> str1;
+    cout << "Enter second string: ";
+    cin >> str2;
+    string s1 = str1, s2 = str2;
+    sort(s1.begin(), s1.end());
+    sort(s2.begin(), s2.end());
+    if (s1 == s2)
+        cout << "Anagrams" << endl;
+    else
+        cout << "Not anagrams" << endl;
+    return 0;
+}
+```
+
+**Output:**
+
+```
+Enter first string: listen
+Enter second string: silent
+Anagrams
+```
+
+---
