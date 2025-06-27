@@ -1,4 +1,4 @@
-# Exam C++
+# Practice C++
 
 ## Phase 1 : Basic Programs : 27 programs [Question_Pdf](Phase_1/phase-1.pdf)
 
@@ -2217,6 +2217,525 @@ int main() {
 Enter first string: listen
 Enter second string: silent
 Anagrams
+```
+
+---
+
+## Phase 6 : OOP Programs : 10 programs [Question_Pdf](Phase_6/phase-6.pdf)
+
+1. Write a C++ program to implement binary search on a sorted array.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int binarySearch(int arr[], int n, int key) {
+    int left = 0, right = n - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == key)
+            return mid;
+        else if (arr[mid] < key)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+    return -1;
+}
+
+int main() {
+    int n, key;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int arr[100];
+    cout << "Enter sorted elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    cout << "Enter element to search: ";
+    cin >> key;
+    int result = binarySearch(arr, n, key);
+    if (result != -1)
+        cout << key << " found at index " << result << endl;
+    else
+        cout << key << " not found in the array." << endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+Enter number of elements: 5
+Enter sorted elements: 1 3 5 7 9
+Enter element to search: 7
+7 found at index 3
+```
+
+---
+
+2. Write a C++ program to implement selection sort.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int arr[100];
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    for (int i = 0; i < n - 1; i++) {
+        int minIdx = i;
+        for (int j = i + 1; j < n; j++)
+            if (arr[j] < arr[minIdx])
+                minIdx = j;
+        int temp = arr[i];
+        arr[i] = arr[minIdx];
+        arr[minIdx] = temp;
+    }
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+Enter number of elements: 5
+Enter elements: 4 2 5 1 3
+Sorted array: 1 2 3 4 5
+```
+
+---
+
+3. Write a C++ program to implement insertion sort.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int arr[100];
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    for (int i = 1; i < n; i++) {
+        int key = arr[i], j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+Enter number of elements: 5
+Enter elements: 4 2 5 1 3
+Sorted array: 1 2 3 4 5
+```
+
+---
+
+4. Write a C++ program to implement quick sort.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pivot = arr[high], i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                swap(arr[i], arr[j]);
+            }
+        }
+        swap(arr[i + 1], arr[high]);
+        int pi = i + 1;
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int arr[100];
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    quickSort(arr, 0, n - 1);
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+Enter number of elements: 5
+Enter elements: 4 2 5 1 3
+Sorted array: 1 2 3 4 5
+```
+
+---
+
+5. Write a C++ program to implement merge sort.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void merge(int arr[], int l, int m, int r) {
+    int n1 = m - l + 1, n2 = r - m;
+    int L[100], R[100];
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+    int i = 0, j = 0, k = l;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j])
+            arr[k++] = L[i++];
+        else
+            arr[k++] = R[j++];
+    }
+    while (i < n1)
+        arr[k++] = L[i++];
+    while (j < n2)
+        arr[k++] = R[j++];
+}
+
+void mergeSort(int arr[], int l, int r) {
+    if (l < r) {
+        int m = l + (r - l) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+    }
+}
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    int arr[100];
+    cout << "Enter elements: ";
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    mergeSort(arr, 0, n - 1);
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+Enter number of elements: 5
+Enter elements: 4 2 5 1 3
+Sorted array: 1 2 3 4 5
+```
+
+---
+
+6. Write a C++ program to implement a circular queue using an array.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+#define MAX 5
+
+class CircularQueue {
+    int arr[MAX], front, rear, count;
+public:
+    CircularQueue() : front(0), rear(-1), count(0) {}
+    void enqueue(int val) {
+        if (count == MAX)
+            cout << "Queue Overflow" << endl;
+        else {
+            rear = (rear + 1) % MAX;
+            arr[rear] = val;
+            count++;
+        }
+    }
+    void dequeue() {
+        if (count == 0)
+            cout << "Queue Underflow" << endl;
+        else {
+            front = (front + 1) % MAX;
+            count--;
+        }
+    }
+    void display() {
+        if (count == 0)
+            cout << "Queue is empty" << endl;
+        else {
+            cout << "Queue: ";
+            for (int i = 0; i < count; i++)
+                cout << arr[(front + i) % MAX] << " ";
+            cout << endl;
+        }
+    }
+};
+
+int main() {
+    CircularQueue q;
+    q.enqueue(10);
+    q.enqueue(20);
+    q.enqueue(30);
+    q.display();
+    q.dequeue();
+    q.display();
+    return 0;
+}
+```
+
+**Output:**
+```
+Queue: 10 20 30
+Queue: 20 30
+```
+
+---
+
+7. Write a C++ program to implement a singly linked list and perform insertion and deletion.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+void insertFront(Node*& head, int val) {
+    Node* temp = new Node{val, head};
+    head = temp;
+}
+
+void deleteFront(Node*& head) {
+    if (head) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+    }
+}
+
+void display(Node* head) {
+    while (head) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = nullptr;
+    insertFront(head, 10);
+    insertFront(head, 20);
+    insertFront(head, 30);
+    display(head);
+    deleteFront(head);
+    display(head);
+    return 0;
+}
+```
+
+**Output:**
+```
+30 20 10
+20 10
+```
+
+---
+
+8. Write a C++ program to implement a doubly linked list and perform insertion and deletion.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* prev;
+    Node* next;
+};
+
+void insertFront(Node*& head, int val) {
+    Node* temp = new Node{val, nullptr, head};
+    if (head)
+        head->prev = temp;
+    head = temp;
+}
+
+void deleteFront(Node*& head) {
+    if (head) {
+        Node* temp = head;
+        head = head->next;
+        if (head)
+            head->prev = nullptr;
+        delete temp;
+    }
+}
+
+void display(Node* head) {
+    while (head) {
+        cout << head->data << " ";
+        head = head->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* head = nullptr;
+    insertFront(head, 10);
+    insertFront(head, 20);
+    insertFront(head, 30);
+    display(head);
+    deleteFront(head);
+    display(head);
+    return 0;
+}
+```
+
+**Output:**
+```
+30 20 10
+20 10
+```
+
+---
+
+9. Write a C++ program to implement a stack using a linked list.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+void push(Node*& top, int val) {
+    Node* temp = new Node{val, top};
+    top = temp;
+}
+
+void pop(Node*& top) {
+    if (top) {
+        Node* temp = top;
+        top = top->next;
+        delete temp;
+    }
+}
+
+void display(Node* top) {
+    while (top) {
+        cout << top->data << " ";
+        top = top->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* top = nullptr;
+    push(top, 10);
+    push(top, 20);
+    display(top);
+    pop(top);
+    display(top);
+    return 0;
+}
+```
+
+**Output:**
+```
+20 10
+10
+```
+
+---
+
+10. Write a C++ program to implement a queue using a linked list.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+void enqueue(Node*& front, Node*& rear, int val) {
+    Node* temp = new Node{val, nullptr};
+    if (!rear) {
+        front = rear = temp;
+    } else {
+        rear->next = temp;
+        rear = temp;
+    }
+}
+
+void dequeue(Node*& front, Node*& rear) {
+    if (front) {
+        Node* temp = front;
+        front = front->next;
+        if (!front)
+            rear = nullptr;
+        delete temp;
+    }
+}
+
+void display(Node* front) {
+    while (front) {
+        cout << front->data << " ";
+        front = front->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Node* front = nullptr;
+    Node* rear = nullptr;
+    enqueue(front, rear, 10);
+    enqueue(front, rear, 20);
+    display(front);
+    dequeue(front, rear);
+    display(front);
+    return 0;
+}
+```
+
+**Output:**
+```
+10 20
+20
 ```
 
 ---
