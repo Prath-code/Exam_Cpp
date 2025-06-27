@@ -39,6 +39,15 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "bitset": "cpp",
+        "cstring": "cpp",
+        "ctime": "cpp",
+        "list": "cpp",
+        "unordered_set": "cpp",
+        "map": "cpp",
+        "regex": "cpp",
+        "set": "cpp",
+        "iomanip": "cpp"
     }
 }
